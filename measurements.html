@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Quantity Measurement</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body> 
+    <div class="container">
+        <div class="header-row">
+            <h1>📐 Dashboard</h1>
+            
+            <div id="auth-controls" style="display: flex; gap: 10px;">
+                
+                <button id="nav-login" onclick="window.location.href='index.html'" class="btn-primary">Login</button>
+                <button id="nav-register" onclick="window.location.href='signup.html'" class="btn-secondary">Register</button>
+                
+                <button id="nav-history" onclick="viewHistory()" class="btn-secondary hidden">📜 View History</button>
+                <button id="nav-logout" onclick="logout()" class="btn-danger hidden">Logout</button>
+                
+            </div>
+        </div>
+        <div class="card mt-2">
+            <h2>Measurement Calculator</h2>
+            
+            <div class="form-row">
+                <div class="w-100">
+                    <label><strong>1. Category:</strong></label>
+                    <select id="measurement-type" onchange="updateUnits()">
+                        <option value="LengthUnit">Length</option>
+                        <option value="VolumeUnit">Volume</option>
+                        <option value="WeightUnit">Weight</option>
+                        <option value="TemperatureUnit">Temperature</option>
+                    </select>
+                </div>
+                <div class="w-100">
+                    <label><strong>2. Operation:</strong></label>
+                    <select id="operation-type" onchange="toggleOperationUI()">
+                        <option value="convert">Convert</option>
+                        <option value="add">Add</option>
+                        <option value="compare">Compare</option>
+                    </select>
+                </div>
+            </div>
+
+            <label class="mt-1" style="display:block; margin-top:15px;"><strong>3. Details:</strong></label>
+            <div class="form-row mt-1">
+                <input type="number" id="val1" placeholder="Value 1 (e.g., 12)">
+                <select id="unit1"></select>
+                
+                <span id="action-label" style="font-weight: bold; padding: 0 10px;">TO</span>
+                
+                <input type="number" id="val2" class="hidden" placeholder="Value 2 (e.g., 2)">
+                <select id="unit2"></select>
+            </div>
+            
+            <button onclick="performCalculation()" class="btn-primary mt-2 w-100">Calculate</button>
+            
+            <div id="calc-result" class="result-box hidden"></div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

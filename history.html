@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - Quantity Measurement</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* A little extra CSS just for the history table */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.95rem; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color); }
+        th { background-color: #f8fafc; color: var(--text-muted); text-transform: uppercase; font-size: 0.85rem; }
+        tr:hover { background-color: #f0f4ff; }
+    </style>
+</head>
+<body> 
+    <div class="container" style="max-width: 800px;">
+        <div class="header-row">
+            <h1>📜 Secure History</h1>
+            <button onclick="window.location.href='measurements.html'" class="btn-secondary">🔙 Back to Calculator</button>
+        </div>
+
+        <div class="card">
+            <div class="form-row">
+                <div class="w-100">
+                    <label><strong>Filter by Operation:</strong></label>
+                    <select id="history-filter">
+                        <option value="convert">Conversions</option>
+                        <option value="add">Additions</option>
+                        <option value="compare">Comparisons</option>
+                    </select>
+                </div>
+                <div style="margin-top: 28px;">
+                    <button onclick="fetchHistory()" class="btn-primary">Fetch Data</button>
+                </div>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table id="history-table" class="hidden">
+                    <thead>
+                        <tr>
+                            <th>Value 1</th>
+                            <th>Value 2</th>
+                            <th>Operation</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-body">
+                        </tbody>
+                </table>
+            </div>
+            
+            <p id="history-message" class="message hidden mt-2"></p>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/history.js"></script>
+</body>
+</html>

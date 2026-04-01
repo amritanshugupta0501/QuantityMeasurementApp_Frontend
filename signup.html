@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Quantity Measurement</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body> 
+    <div class="container">
+        <h1>📐 Create Account</h1>
+        <div class="card">
+            <h2>Sign Up</h2>
+            <input type="text" id="username" placeholder="Choose a Username" required>
+            <input type="password" id="password" placeholder="Create a Password" required>
+            
+            <button onclick="register()" class="btn-secondary mt-1 w-100">Register</button>
+            <p id="auth-message" class="message"></p>
+            
+            <p class="text-center mt-2">
+                Already have an account? <a href="index.html">Login here</a>
+            </p>
+
+            <p class="text-center mt-1">
+                <a href="measurements.html" style="color: var(--secondary);">Or continue as a Guest</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
