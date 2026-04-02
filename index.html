@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Quantity Measurement</title>
     <link rel="stylesheet" href="css/styles.css">
+    
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body> 
     <div class="container">
@@ -20,6 +22,24 @@
             <p class="text-center mt-2">
                 Don't have an account? <a href="signup.html">Sign up here</a>
             </p>
+
+            <div style="display: flex; justify-content: center; margin-top: 20px;">
+                <div id="g_id_onload"
+                     data-client_id="344216298544-7qjbd2m436ef5nravc9veue9prevbnnt.apps.googleusercontent.com"
+                     data-context="signin"
+                     data-ux_mode="popup"
+                     data-callback="handleGoogleLogin"
+                     data-auto_prompt="false">
+                </div>
+                <div class="g_id_signin"
+                     data-type="standard"
+                     data-shape="rectangular"
+                     data-theme="outline"
+                     data-text="signin_with"
+                     data-size="large"
+                     data-logo_alignment="left">
+                </div>
+            </div>
 
             <p class="text-center mt-1">
                 <a href="measurements.html" style="color: var(--secondary);">Or continue as a Guest</a>

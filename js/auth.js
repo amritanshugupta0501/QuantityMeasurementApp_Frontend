@@ -91,3 +91,25 @@ function logout() {
     localStorage.removeItem('jwt_token');
     window.location.href = 'measurements.html';
 }
+async function handleGoogleLogin(googleResponse) {
+    const token = googleResponse.credential;
+
+    try {
+        const response = await fetch(`${CONFIG.API_BASE_URL}/auth/google`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token: token })
+        });
+
+        const data = await response.json();
+        
+        if (response.ok) {
+            localStorage.setItem('jwt_token', data.token);
+            window.location.href = 'measurements.html'; 
+        } else {
+            showMessage('auth-message', data.error || "Google Login failed on server.", true);
+        }
+    } catch (error) {
+        showMessage('auth-message', "Server error. Is the C# backend running?", true);
+    }
+}
