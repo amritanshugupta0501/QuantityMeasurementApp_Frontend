@@ -1,0 +1,14 @@
+<nav class="navbar">
+  <div class="nav-brand">
+    <a routerLink="/" class="logo gradient-text">QMeasure</a>
+  </div>
+  <div class="nav-links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Calculator</a>
+    <a routerLink="/history" routerLinkActive="active" *ngIf="isLoggedIn$ | async">History</a>
+    
+    <div class="auth-buttons">
+      <a routerLink="/login" class="btn-login" *ngIf="!(isLoggedIn$ | async)">Login</a>
+      <button class="btn-logout" (click)="logout()" *ngIf="isLoggedIn$ | async">Logout</button>
+    </div>
+  </div>
+</nav>

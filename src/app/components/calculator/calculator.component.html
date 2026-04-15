@@ -1,0 +1,78 @@
+<div class="calculator-wrapper">
+  <div class="card calc-card">
+    <h2 class="calc-title gradient-text">Measurement Calculator</h2>
+    
+    <div class="grid-controls">
+      <div class="form-group">
+        <label>Measurement Type</label>
+        <select class="form-control" [(ngModel)]="selectedType" (change)="onTypeChange()">
+          <option *ngFor="let mType of measurementTypes" [value]="mType">{{mType.replace('Unit', '')}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Operation</label>
+        <select class="form-control" [(ngModel)]="selectedOperation" (change)="clearMessages()">
+          <option *ngFor="let op of operations" [value]="op">{{op}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="values-grid">
+      <!-- Quantity 1 -->
+      <div class="quantity-box">
+        <h4 class="sub-title">Quantity 1</h4>
+        <div class="form-group">
+          <label>Value</label>
+          <input type="number" class="form-control input-value" [(ngModel)]="val1" placeholder="Enter value">
+        </div>
+        <div class="form-group">
+          <label>Unit</label>
+          <select class="form-control" [(ngModel)]="unit1">
+            <option *ngFor="let u of unitsMap[selectedType]" [value]="u">{{u}}</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Quantity 2 -->
+      <div class="quantity-box" *ngIf="isTwoInputsRequired()">
+        <h4 class="sub-title">Quantity 2</h4>
+        <div class="form-group">
+          <label>Value</label>
+          <input type="number" class="form-control input-value" [(ngModel)]="val2" placeholder="Enter value">
+        </div>
+        <div class="form-group">
+          <label>Unit</label>
+          <select class="form-control" [(ngModel)]="unit2">
+            <option *ngFor="let u of unitsMap[selectedType]" [value]="u">{{u}}</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Target Unit (If Convert) -->
+      <div class="quantity-box" *ngIf="!isTwoInputsRequired()">
+        <h4 class="sub-title">Target</h4>
+        <div class="form-group" style="opacity: 0.5;">
+          <label>Value</label>
+          <input type="number" class="form-control input-value" disabled placeholder="Result here">
+        </div>
+        <div class="form-group">
+          <label>Convert To</label>
+          <select class="form-control" [(ngModel)]="unit2">
+            <option *ngFor="let u of unitsMap[selectedType]" [value]="u">{{u}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-primary calc-btn" (click)="calculate()">Calculate</button>
+
+    <div class="result-area success-area" *ngIf="resultMessage">
+      <strong>Result: </strong> {{resultMessage}}
+    </div>
+    
+    <div class="result-area error-area" *ngIf="errorMessage">
+      <strong>Error: </strong> {{errorMessage}}
+    </div>
+  </div>
+</div>
