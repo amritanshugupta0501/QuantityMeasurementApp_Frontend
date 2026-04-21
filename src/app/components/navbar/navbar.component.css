@@ -1,0 +1,65 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  background-color: var(--surface-color);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a:not(.btn-login) {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+  padding-bottom: 4px;
+}
+
+.nav-links a:hover:not(.btn-login), .nav-links a.active:not(.btn-login) {
+  color: var(--primary-color);
+}
+
+.auth-buttons {
+  display: flex;
+  margin-left: 1rem;
+}
+
+.btn-login {
+  background-color: var(--primary-color);
+  color: white !important;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-login:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.btn-logout {
+  background-color: var(--surface-color);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+}
+
+.btn-logout:hover {
+  background-color: var(--danger);
+  color: white;
+}

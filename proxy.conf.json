@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://quantitymeasurementapp-2-6gf2.onrender.com",
+    "secure": true,
+    "changeOrigin": true
+  }
+}
